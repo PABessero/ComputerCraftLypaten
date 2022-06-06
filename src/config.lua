@@ -13,4 +13,13 @@ config.inductionMatrix = {
     }
 }
 
+config.mainMonitor = {
+    name = 'Main',
+    id = 'monitor_0'
+}
+
+config.menuWindow = {
+    width = 13
+}
+
 return config
