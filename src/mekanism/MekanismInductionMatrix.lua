@@ -42,6 +42,7 @@ end
 
 function MekanismInductionMatrix.mainLoop()
     for i, v in pairs(conf.inductionMatrix) do
+        matrix = v2.wrapper
         v.energy = MekanismInductionMatrix.getEnergy(matrix)
         v.maxEnergy = MekanismInductionMatrix.getMaxEnergy(matrix)
         v.percentage = MekanismInductionMatrix.getEnergy(matrix)
