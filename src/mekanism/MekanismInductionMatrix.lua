@@ -47,10 +47,10 @@ function MekanismInductionMatrix.setupAllMatrix()
                     print('found')
                     break
                 end
-                if toInsert then
-                    print('not found')
-                    table.insert(conf.inductionMatrix, { name = peripheralId, id = peripheralId, wrapper = peripheral.wrap(peripheralId)})
-                end
+            end
+            if toInsert then
+                print('not found')
+                table.insert(conf.inductionMatrix, { name = peripheralId, id = peripheralId, wrapper = peripheral.wrap(peripheralId)})
             end
         end
     end
