@@ -15,11 +15,11 @@ function MekanismInductionMatrix.getMaxEnergy(matrix)
 end
 
 function MekanismInductionMatrix.getPercentage(matrix)
-    return math.floor(self:getEnergy(matrix) / self:getMaxEnergy(matrix) * 100)
+    return math.floor(MekanismInductionMatrix.getEnergy(matrix) / MekanismInductionMatrix.getMaxEnergy(matrix) * 100)
 end
 
 function MekanismInductionMatrix.getPercentagePrecise(matrix)
-    return self:getEnergy(matrix) / self:getMaxEnergy(matrix) * 100
+    return MekanismInductionMatrix.getEnergy(matrix) / MekanismInductionMatrix.getMaxEnergy(matrix) * 100
 end
 
 function MekanismInductionMatrix.sendData(matrix)
@@ -43,11 +43,11 @@ end
 function MekanismInductionMatrix.mainLoop()
     for i, v in pairs(conf.inductionMatrix) do
         v.energy = self.getEnergy(matrix)
-        v.maxEnergy = self.getMaxEnergy(matrix)
-        v.percentage = self.getEnergy(matrix)
-        v.percentagePrecise = self.getPercentagePrecise(matrix)
+        v.maxEnergy = MekanismInductionMatrix.getMaxEnergy(matrix)
+        v.percentage = MekanismInductionMatrix.getEnergy(matrix)
+        v.percentagePrecise = MekanismInductionMatrix.getPercentagePrecise(matrix)
 
-        self.sendData(matrix)
+        MekanismInductionMatrix.sendData(matrix)
     end
 end
 
