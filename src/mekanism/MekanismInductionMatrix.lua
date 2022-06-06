@@ -60,8 +60,8 @@ function MekanismInductionMatrix.setupAllScreens(parent)
     line = 0
 
     for i, matrix in pairs(conf.inductionMatrix) do
-        print('Induction Matrix: '..matrix.id)
-        print(matrix.wrapper)
+        --print('Induction Matrix: '..matrix.id)
+        --print(matrix.wrapper)
 
 
         if matrix.monitor then
