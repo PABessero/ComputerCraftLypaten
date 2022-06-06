@@ -5,9 +5,11 @@
 inductionMatrix = require('mekanism.MekanismInductionMatrix')
 conf = require('config')
 
-local ws = http.websocket(conf.websocketServer)
+conf.ws = http.websocket(conf.websocketServer)
 
 inductionMatrix.getAllMatrix()
 
-ws.send(conf.inductionMatrix)
-ws.close()
+while true do
+    inductionMatrix.mainLoop()
+    wait(0.1)
+end

@@ -22,8 +22,8 @@ function MekanismInductionMatrix.getPercentagePrecise(matrix)
     return self:getEnergy(matrix) / self:getMaxEnergy(matrix) * 100
 end
 
-sendData = function(matrix, websocket)
-    websocket.send(matrix)
+function MekanismInductionMatrix.sendData(matrix)
+    conf.ws.send(matrix)
 end
 
 function MekanismInductionMatrix.getAllMatrix()
@@ -37,6 +37,17 @@ function MekanismInductionMatrix.getAllMatrix()
                 end
             end
         end
+    end
+end
+
+function MekanismInductionMatrix.mainLoop()
+    for i, v in pairs(conf.inductionMatrix) do
+        v.energy = self.getEnergy(matrix)
+        v.maxEnergy = self.getMaxEnergy(matrix)
+        v.percentage = self.getEnergy(matrix)
+        v.percentagePrecise = self.getPercentagePrecise(matrix)
+
+        self.sendData(matrix)
     end
 end
 
