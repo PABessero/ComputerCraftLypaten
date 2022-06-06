@@ -7,11 +7,11 @@ conf = require('config')
 local MekanismInductionMatrix = {}
 
 function MekanismInductionMatrix.getEnergy(matrix)
-    return matrix.peripheral.getEnergy()/2.5
+    return matrix.getEnergy()/2.5
 end
 
 function MekanismInductionMatrix.getMaxEnergy(matrix)
-    return matrix.peripheral.getMaxEnergy()/2.5
+    return matrix.getMaxEnergy()/2.5
 end
 
 function MekanismInductionMatrix.getPercentage(matrix)
@@ -42,7 +42,7 @@ end
 
 function MekanismInductionMatrix.mainLoop()
     for i, v in pairs(conf.inductionMatrix) do
-        matrix = v2.wrapper
+        matrix = v.wrapper
         v.energy = MekanismInductionMatrix.getEnergy(matrix)
         v.maxEnergy = MekanismInductionMatrix.getMaxEnergy(matrix)
         v.percentage = MekanismInductionMatrix.getEnergy(matrix)
