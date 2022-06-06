@@ -35,21 +35,21 @@ function MekanismInductionMatrix.sendData(matrix)
 end
 
 function MekanismInductionMatrix.setupAllMatrix()
-    for i, v in pairs(peripheral.getNames()) do
-        if string.find(v, 'inductionPort') then
+    for i, peripheralId in pairs(peripheral.getNames()) do
+        print(peripheralId)
+        if string.find(peripheralId, 'inductionPort') then
+            print('entered')
             local toInsert = true
             for i2, v2 in pairs(conf.inductionMatrix) do
-                if string.find(v, v2.id) then
-                    v2.wrapper = peripheral.wrap(v)
+                if string.find(peripheralId, v2.id) then
+                    v2.wrapper = peripheral.wrap(peripheralId)
                     toInsert = false
-                    print('Induction Matrix: '..v2.id)
-                    print(v2.wrapper)
+                    print('found')
                     break
                 end
                 if toInsert then
-                    table.insert(conf.inductionMatrix, {name = v, id = v, wrapper = peripheral.wrap(v)})
-                    print('Induction Matrix: '..v.id)
-                    print(v.wrapper)
+                    print('not found')
+                    table.insert(conf.inductionMatrix, { name = peripheralId, id = peripheralId, wrapper = peripheral.wrap(peripheralId)})
                 end
             end
         end
@@ -57,7 +57,13 @@ function MekanismInductionMatrix.setupAllMatrix()
 end
 
 function MekanismInductionMatrix.setupAllScreens(parent)
+    line = 0
+
     for i, matrix in pairs(conf.inductionMatrix) do
+        print('Induction Matrix: '..matrix.id)
+        print(matrix.wrapper)
+
+
         if matrix.monitor then
             matrix.monitor.wrapper = peripheral.wrap(matrix.monitor.id)
         end
@@ -76,6 +82,8 @@ function MekanismInductionMatrix.setupAllScreens(parent)
         matrix.powerStorageWindow.clear()
         matrix.powerStorageWindow.setCursorPos(2 , 1)
         matrix.powerStorageWindow.write('powerStorageWindow')
+
+        line = line+3
     end
 end
 

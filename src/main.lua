@@ -20,7 +20,7 @@ mekanismPowerWindow.clear()
 mekanismPowerWindow.setBackgroundColor(colors.lightGray)
 
 local oldTerm = term.redirect(mainScreen)
-    paintutils.drawline(conf.menuWindow.width+1, 1, conf.menuWindow.width+1, conf.mainMonitor.height)
+    paintutils.drawLine(conf.menuWindow.width+1, 1, conf.menuWindow.width+1, conf.mainMonitor.height)
 term.redirect(oldTerm)
 
 inductionMatrix.setupAllMatrix()
@@ -28,5 +28,5 @@ inductionMatrix.setupAllScreens(mekanismPowerWindow)
 
 while true do
     inductionMatrix.mainLoop()
-    wait(0.1)
+    sleep(0.1)
 end
